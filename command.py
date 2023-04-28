@@ -6,17 +6,27 @@ def set_channel(channel,voltage,current,limitV,limitC):
     limitC = f";CURR:LIM {limitC}"
     return channel + voltage + current + limitV + limitC
 
+def get_channel(channel):
+    channel = f"INST CH{channel}"
+    voltage = f";VOLT?"
+    current = f";CURR?"
+    limitV =  f";VOLT:LIM?"
+    limitC =  f";CURR:LIM?"
+    return channel + voltage + current + limitV + limitC
+
+# def get_channel(channel,voltage,current,limitV,limitC):
+#     get_voltage(channel,voltage)
+#     get_current(channel,current)
+#     get_limitV(channel,limitV)
+#     get_limitC(channel,limitC) 
+
 # def set_channel(channel,voltage,current,limitV,limitC):
 #     set_voltage(channel,voltage)
 #     set_current(channel,current)
 #     set_limitV(channel,limitV)
 #     set_limitC(channel,limitC)
 
-# def get_channel(channel,voltage,current,limitV,limitC):
-#     get_voltage(channel,voltage)
-#     get_current(channel,current)
-#     get_limitV(channel,limitV)
-#     get_limitC(channel,limitC)    
+   
 
 # def set_current(channel,current):
 #     channel = f"INST CH{channel}"
@@ -35,13 +45,7 @@ def set_channel(channel,voltage,current,limitV,limitC):
 
 #####################################
 
-def get_channel(channel):
-    channel = f"INST CH{channel}"
-    voltage = f";VOLT?"
-    current = f";CURR?"
-    limitV = f";VOLT:LIM?"
-    limitC = f";CURR:LIM?"
-    return channel + current + limitV + limitC + voltage
+
 
 # def get_voltage(channel):
 #     channel = f"INST CH{channel}"
