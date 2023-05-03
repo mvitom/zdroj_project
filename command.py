@@ -15,6 +15,7 @@ def get_channel(channel):
     limitV =  f";VOLT:LIM?"
     limitC =  f";CURR:LIM?"
     return channel + voltage + current + limitV + limitC
+    
 def switch_state():
     return "CHAN:OUTP:ALL?"
 def switch_on_channel1():
@@ -33,32 +34,7 @@ def switch_off_channel():
 #     get_limitV(channel,limitV)
 #     get_limitC(channel,limitC) 
 
-# def set_channel(channel,voltage,current,limitV,limitC):
-#     set_voltage(channel,voltage)
-#     set_current(channel,current)
-#     set_limitV(channel,limitV)
-#     set_limitC(channel,limitC)
-
-   
-
-# def set_current(channel,current):
-#     channel = f"INST CH{channel}"
-#     current = f";CURR {current}"
-#     return channel + current
-
-# def set_limitV(channel,limitV):
-#     channel = f"INST CH{channel}"
-#     limitV = f";VOLT:LIM {limitV}"
-#     return channel + limitV
-
-# def set_limitC(channel,limitC):
-#     channel = f"INST CH{channel}"
-#     limitC = f";CURR:LIM {limitC}"
-#     return channel + limitC
-
 #####################################
-
-
 
 def get_voltage(channel):
     channel = f"INST CH{channel}"
