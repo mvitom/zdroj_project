@@ -35,17 +35,73 @@ def set_channel(channel,voltage,current,limitV,limitC):
 
 
 #______________________________________________________________________
-
 def switch_state():
     return "CHAN:OUTP:ALL?" #return 1, 0, 1
 
-def switch_off_channel():
-    return
 
-def switch_on_all():
+
+#switch 1,2,3 OFF
+#____________________________________________________________________
+def switch_off_all():
     return
 def switch_off_ch1():
-    return
+    state = switch_state()
+    #message = command.switch_on_channel1()
+    try:
+        client_socket.send(state.encode())
+        chan = client_socket.recv(1024).decode()
+        chan1,chan2,chan3= chan.split(",")
+        if chan2 and chan3 == "1":
+            message = "CHAN:OUTP:ALL 0,1,1"
+        elif chan2== "1" and chan3 == "0":
+            message = "CHAN:OUTP:ALL 0,1,0"
+        elif chan2 == "0" and chan3 == "1":
+            message = "CHAN:OUTP:ALL 0,0,1"
+        elif chan2 and chan3== "0":
+            message = "CHAN:OUTP:ALL 0,0,0"
+        client_socket.send(message.encode())
+    except:
+        print("setch1: failed to send/recieve message")
+def switch_off_ch2():
+    state = switch_state()
+    #message = command.switch_on_channel1()
+    try:
+        client_socket.send(state.encode())
+        chan = client_socket.recv(1024).decode()
+        chan1,chan2,chan3= chan.split(",")
+        
+        if chan1 and chan3 == "1":
+            message = "CHAN:OUTP:ALL 1,0,1"
+        elif chan1== "1" and chan3 == "0":
+            message = "CHAN:OUTP:ALL 1,0,0"
+        elif chan1 == "0" and chan3 == "1":
+            message = "CHAN:OUTP:ALL 0,0,1"
+        elif chan1 and chan3== "0":
+            message = "CHAN:OUTP:ALL 0,0,0"
+        # time.sleep(0.5)
+        client_socket.send(message.encode())
+    except:
+        print("setch1: failed to send/recieve message")
+def switch_off_ch3():
+    state = switch_state()
+    #message = command.switch_on_channel1()
+    try:
+        client_socket.send(state.encode())
+        chan = client_socket.recv(1024).decode()
+        chan1,chan2,chan3= chan.split(",")
+        #while ch3 == "0":
+        if chan1 and chan2 == "1":
+            message = "CHAN:OUTP:ALL 1,1,0"
+        elif chan1== "1" and chan2 == "0":
+            message = "CHAN:OUTP:ALL 1,0,0"
+        elif chan1 == "0" and chan2 == "1":
+            message = "CHAN:OUTP:ALL 0,1,0"
+        elif chan1 and chan2== "0":
+            message = "CHAN:OUTP:ALL 0,0,0"
+        # time.sleep(0.5)
+        client_socket.send(message.encode())
+    except:
+        print("setch1: failed to send/recieve message")
 #______________________________________________________________________
 
 
